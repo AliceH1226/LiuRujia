@@ -18,3 +18,37 @@ input
 3.5 9
 output 
 274.889
+
+//reverse a triple figure
+
+//remain leading zero
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   int n,m;
+   scanf("%d",&n);
+   m=(n%10)*100+(n/10%10)*10+(n/100);
+   printf("%03d\n",m);
+}
+input
+520
+ouput
+025
+//leading zero is not allowed
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   int n,m;
+   scanf("%d",&n);
+   m=(n%10)*100+(n/10%10)*10+(n/100);
+   printf("%d\n",m);
+}
+input
+520
+output
+25
+
