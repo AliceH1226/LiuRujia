@@ -52,3 +52,389 @@ input
 output
 25
 
+
+//swap two numbers
+
+//xor
+//right combination
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+  int a,b;
+  scanf("%d%d",&a,&b);
+  a^=b^=a^=b;
+  printf("%d %d",a,b);
+
+}
+input 
+2 3
+output
+3 2
+
+//simple stupid
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+  int a,b;
+  scanf("%d%d",&a,&b);
+  printf("%d %d",b,a);
+
+}
+
+//no extra memory
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+  int a,b;
+  scanf("%d%d",&a,&b);
+  a=a+b;
+  b=a-b;
+  a=a-b;
+  printf("%d %d",a,b);
+
+}
+
+//extra variable
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+  int a,b,t;
+  scanf("%d%d",&a,&b);
+  t=a;
+  a=b;
+  b=t;
+
+  printf("%d %d",a,b);
+
+}
+
+
+//print \n
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   printf("\\n");
+}
+
+
+\\print %d
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   printf("%%d\n");
+}
+
+//calculate the average of three numbers;
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   double a,b,c;
+   scanf("%lf%lf%lf",&a,&b,&c);
+   double avg;
+   avg=(a+b+c)/3;
+   printf("%.3lf\n",avg);
+}
+input
+2 5 7
+output
+4.667
+
+//temperature change f to c
+//input f output c
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   double f;
+   scanf("%lf",&f);
+   printf("%.3lf\n",5*(f-32)/9);
+
+
+}
+intput
+99
+output
+37.222
+
+//calculate 1+...+n
+//formular is avalible for odd or even n
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   int n;
+   scanf("%d",&n);
+   printf("%d\n",(1+n)*n/2);
+}
+input
+3
+2
+output 
+6
+3
+
+//output cos(n),sin(n)
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   double n;
+   scanf("%lf",&n);
+   printf("%lf%lf\n",cos(n),sin(n));
+
+
+}
+input
+20
+output
+0.4080820.912945
+
+
+//remain the first two digits after the decimal points
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   int n;
+   scanf("%d",&n);
+   double sum;
+   sum=95*n;
+   if(sum>300)sum=0.85*sum;
+   printf("%.2lf\n",sum);
+
+
+}
+input
+9
+output
+726.75
+
+//input there numbers as the lengths of a triangle;
+//if they can be constructed as a right triangle, output yes, otherwise no
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   int a,b,c,t;
+   scanf("%d%d%d",&a,&b,&c);
+   if(a>b)
+   {
+       t=a;
+       a=b;
+       b=t;
+   }
+   if(a>c)
+   {
+       t=a;
+       a=c;
+       c=t;
+   }
+   if(b>c)
+   {
+       t=b;
+       b=c;
+       c=t;
+   }
+
+   if(a*a+b*b==c*c)
+    printf("yes\n");
+   else
+    printf("no\n");
+
+
+}
+input
+1 2 3
+5 3 4
+output 
+no 
+yes
+
+//judge if it is leap year
+
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    if((n%4==0&&n%100!=0)||(n%400==0&&n%4000!=0))
+        printf("yes\n");
+    else
+        printf("no\n");
+}
+input
+2020
+2000
+output
+yes
+yes
+
+//the upper bound of type int is 21 474 836 747
+//eleven digits
+
+//the largest number of digits of type double that can be remain after the decimal points is six
+
+//the largest positive interger of the type double is 488*10^20, the smallest negative is -488*10^20,
+the smallest positive is 0
+
+
+//&& first, || second
+
+
+//output all full square(9=3*3） from 1000 to 9999 whose form is aabb
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    for(int a=1;a<=9;a++)
+    {
+        for(int b=0;b<=9;b++)
+        {
+            int n=a*1100+b*11;
+            int m=floor(sqrt(n)+0.5);
+            if(m*m==n)printf("%d\n",n);
+        }
+    }
+}
+
+output 
+7744
+
+
+//the following is not recommanded
+//as the float type loose its accuracy
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    for(int a=1;a<=9;a++)
+    {
+        for(int b=0;b<=9;b++)
+        {
+           int n=a*1100+b*11;
+           if(sqrt(n)==floor(sqrt(n)))printf("%d\n",n);
+        }
+    }
+}
+output
+7744
+
+//another approach
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    for(int x=1;;x++)
+    {
+        int n=x*x;
+        if(n<1000)continue;
+        if(n>9999)break;
+        int hi=n/100;
+        int lo=n%100;
+        if(hi%10==hi/10&&lo%10==lo/10)printf("%d\n",n);
+    }
+}
+output
+7744
+
+
+//3*n+1 problem overflow
+//for any n>1, if n is odd, n->3*n+1, otherwise n->n/2. After several operations, n will be 1.
+//input n, output the number of operations
+//while loop is suitable for the situation that we don't know the times of loop
+
+//the following is wrong 3*n+1 may larger than 2147483647(the largest number of type int)
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int n,cnt=0;
+    scanf("%d",&n);
+    while(n>1)
+    {
+        if(n%2==1)n=n*3+1;
+        else n /=2;
+        cnt++;
+    }
+    printf("%d\n",cnt);
+}
+input
+987654321
+output
+1
+//wrong answer
+//when n=987654321, n*3+1 is larger than 2147483647, which turn out to be a negative number
+//and is not larger than 1, break.
+
+
+//here is the ac code
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int n2,cnt=0;
+    scanf("%d",&n2);
+    long long n=n2;
+    while(n>1)
+    {
+        if(n%2==1)n=n*3+1;
+        else n/=2;
+        cnt++;
+    }
+    printf("%d\n",cnt);
+}
+input
+987654321
+output 
+180
+
+
+//calculate pi/4=1-1/3+1/5-1/7 until the last term is smallest than 10^-6
+//the loop break after the term is calculated, do-while loop is prefered
+
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    double sum=0;
+    for(int i=0;;i++){
+        double term=1.0/(i*2+1);
+        if(i%2==0)sum+=term;
+        else sum-=term;
+        if(term<1e-6)break;
+    }
+    printf("%.6f\n",sum);
+}
+output
+0.785399
+
+
+
