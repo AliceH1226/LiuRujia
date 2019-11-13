@@ -217,4 +217,58 @@ input
 output
 2 8 4.625
 
+//Scanf has return value. It returns the number of variables that are successfully inputted.
+//same problem as above, input multiple tests. For each test, the first line is n, and the second line is n integers.
+//when n is 0, the input ends.
+
+
+
+
+#include<stdio.h>
+#include<iostream>
+#include<time.h>
+#define INF 1000000000
+using namespace std;
+int main()
+{
+
+
+   freopen("C:\\Users\\lenovo\\Desktop\\tmp.txt","r",stdin);
+
+    int x,n=0,kase=0;
+    while(scanf("%d",&n)==1&&n)
+    {
+        int s=0,min=INF,max=-INF;
+        for(int i=0;i<n;i++)
+        {
+            scanf("%d",&x);
+            s+=x;
+        if(x<min)min=x;
+        if(x>max)max=x;
+        }
+
+         /*
+    printf("x=%d,min=%d,max=%d\n",x,min,max);
+
+    */
+     printf("Case %d: %d %d %.3f\n",++kase,min,max,(double)s/n);
+
+    }
+
+
+
+  fclose(stdin);
+
+
+}
+
+input
+8
+2 8 3 5 1 7 3 6
+4
+-4 6 10 0
+0
+output
+Case 1: 1 8 4.375
+Case 2: -4 10 3.000
 
