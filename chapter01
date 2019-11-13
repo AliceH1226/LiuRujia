@@ -2,9 +2,6 @@
 
 //given r,h of a cylinder, calculate surface area
 
-
-
-
 #include<stdio.h>
 #include<math.h>
 int main()
@@ -17,3 +14,7 @@ int main()
    s=s1*2.0+s2;
    printf("%.3f\n",s);
 }
+input 
+3.5 9
+output 
+274.889
