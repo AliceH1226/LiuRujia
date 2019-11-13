@@ -1,0 +1,142 @@
+
+
+//take the last six digits, use modulo operation
+//input n, calculate S=1!+2!+3!+...+n!. Take the last six digits not include leading zero.
+//n<=10^6
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+   int n,S=0;
+   scanf("%d",&n);
+   for(int i=1;i<=n;i++)
+   {
+       int fac=1;
+       for(int j=1;j<=i;j++)
+       {
+           fac *=j;
+       }
+
+           S+=fac;
+
+   }
+   printf("%d\n",S%1000000);
+
+}
+input
+10
+output
+37913
+
+
+
+
+#include<stdio.h>
+#include<iostream>
+#include<time.h>
+using namespace std;
+int main()
+{
+    freopen("C:\\Users\\lenovo\\Desktop\\tmp.txt","r",stdin);
+   const int MOD=1000000;
+   int n,S=0;
+   scanf("%d",&n);
+
+  cout<<"n=="<<n<<endl;
+   for(int i=1;i<=n;i++)
+   {
+       int fac=1;
+       for(int j=1;j<=i;j++)
+       {
+           fac=(fac*j%MOD);
+       }
+       S=(S+fac)%MOD;
+   }
+   printf("%d\n",S);
+   printf("Time used=%.2f\n",(double)clock()/CLOCKS_PER_SEC);
+  fclose(stdin);
+
+}
+input
+20
+40
+80
+160
+1600
+6400
+12800
+25600
+51200
+
+output
+n==20
+820313
+Time used=0.01
+n==40
+940313
+Time used=0.00
+n==80
+940313
+Time used=0.00
+n==160
+940313
+Time used=0.01
+n==1600
+940313
+Time used=0.03
+n==6400
+940313
+Time used=0.26
+n==12800
+940313
+Time used=0.95
+n==25600
+940313
+Time used=3.50
+n==51200
+940313
+Time used=13.68
+
+//it's expensive on time by using loop. About 5 hours is needed when n is 10^6.
+//The answer is always the same after n=40. It's because the last six digits of the 
+//answer when n is 25 are zeros. if(n>25) n=25 is prefered.
+
+//if(n>25) n=25
+
+
+#include<stdio.h>
+#include<iostream>
+#include<time.h>
+using namespace std;
+int main()
+{
+    freopen("C:\\Users\\lenovo\\Desktop\\tmp.txt","r",stdin);
+   const int MOD=1000000;
+   int n,S=0;
+   scanf("%d",&n);
+
+  cout<<"n=="<<n<<endl;
+  if(n>25)n=25;
+   for(int i=1;i<=n;i++)
+   {
+       int fac=1;
+       for(int j=1;j<=i;j++)
+       {
+           fac=(fac*j%MOD);
+       }
+       S=(S+fac)%MOD;
+   }
+   printf("%d\n",S);
+   printf("Time used=%.2f\n",(double)clock()/CLOCKS_PER_SEC);
+  fclose(stdin);
+
+}
+input
+1000000
+output
+n==1000000
+940313
+Time used=0.03
+
+
+
