@@ -140,3 +140,81 @@ Time used=0.03
 
 
 
+//given some intergers, output the max, min, average
+
+
+#include<stdio.h>
+#include<iostream>
+#include<time.h>
+#define LOCAL//delete before submission
+#define INF 1000000000
+using namespace std;
+int main()
+{
+    #ifdef LOCAL
+    freopen("C:\\Users\\lenovo\\Desktop\\tmp.txt","r",stdin);
+    freopen("C:\\Users\\lenovo\\Desktop\\tmpout.txt","w",stdout);
+    #endif
+    int x,n=0,min=INF,max=-INF,s=0;
+    while(scanf("%d",&x)==1)
+    {
+        s+=x;
+        if(x<min)min=x;
+        if(x>max)max=x;
+         /*
+    printf("x=%d,min=%d,max=%d\n",x,min,max);
+    */
+    n++;
+    }
+    printf("%d %d %.3f\n",min,max,(double)s/n);
+
+
+  fclose(stdin);
+  fclose(stdout);
+
+}
+input
+2 8 3 5 1 7 3 6
+output
+1 8 4.375
+//to avoid forgetting to delete redirection before submission, #define LOCAL #ifdef LOCAL #endif ,deleteing #define LOCAL is needed
+
+
+//when file input output is a must and redirection is not allowed, here is the code
+#include<stdio.h>
+#include<iostream>
+#include<time.h>
+#define LOCAL
+#define INF 1000000000
+using namespace std;
+int main()
+{
+    FILE *fin, *fout;
+    fin=fopen("C:\\Users\\lenovo\\Desktop\\tmp.txt","r");
+    fout=fopen("C:\\Users\\lenovo\\Desktop\\tmpout.txt","w");
+
+    int x,n=0,min=INF,max=-INF,s=0;
+    while(fscanf(fin,"%d",&x)==1)
+    {
+        s+=x;
+        if(x<min)min=x;
+        if(x>max)max=x;
+         /*
+    printf("x=%d,min=%d,max=%d\n",x,min,max);
+    */
+    n++;
+    }
+    fprintf(fout,"%d %d %.3f\n",min,max,(double)s/n);
+
+
+  fclose(fin);
+  fclose(fout);
+
+}
+
+input
+2 8 3 5 2 7 3 7
+output
+2 8 4.625
+
+
