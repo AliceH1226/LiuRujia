@@ -333,6 +333,11 @@ Case 1: 41
 Case 2: No answer
 
 //Dropping Balls UVa679
+//D<=20,I is the number of ball,D is the depth of the binary tree, I is no more than the number of leaves(2^D-1),
+//the index of the ball is 1,...2^D-1, from top to bottom, left to right, all the leaves are in the same depth
+//when the ball fell on a node, the node changes its state to its opposite. Then if the state of the node is closed, 
+//the ball enter left subtree, otherwise, right subtree.
+//Innitially all nodes are closed
 
 
 #include<cstdio>
@@ -373,6 +378,7 @@ output
 //improment
 //if I-th ball is odd, then it is the (I+1)/2-th ball to go down to its left subtree
 //if I-th ball is even, then it is the I/2-th ball to go down to its right subtree
+//so we can directly get the answer of the last ball
 #include<cstdio>
 #include<cstring>
 const int maxd=20;
