@@ -272,3 +272,100 @@ output
 Case 1: 1 8 4.375
 Case 2: -4 10 3.000
 
+
+//daffodil
+
+
+#include<stdio.h>
+using namespace std;
+
+int main()
+{
+    for(int i=100;i<=999;i++)
+    {
+        int g,s,b;
+        g=i%10;
+        s=i/10%10;
+        b=i/100;
+        if(g*g*g+b*b*b+s*s*s==i)printf("%d\n",i);
+    }
+}
+output
+153
+370
+371
+407
+
+
+//hanxin
+
+
+
+
+#include<stdio.h>
+using namespace std;
+
+int main()
+{
+    int a,b,c;
+    int cnt=0;
+    while(scanf("%d%d%d",&a,&b,&c)!=EOF){
+            bool flag=false;
+        for(int i=10;i<=100;i++)
+    {
+        if(i%3==a&&i%5==b&&i%7==c)
+        {
+            printf("Case %d: %d\n",++cnt,i);
+            flag=true;
+            break;
+        }
+
+    }
+    if(!flag)printf("Case %d: No answer\n",++cnt);
+    };
+
+}
+input
+2 1 6
+2 1 3
+output
+Case 1: 41
+Case 2: No answer
+
+//Dropping Balls UVa679
+
+
+#include<cstdio>
+#include<cstring>
+const int maxd=20;
+int s[1<<maxd];
+int main()
+{
+    int D,I,t;
+    scanf("%d",&t);
+    while(t--){
+            scanf("%d%d",&D,&I);
+        memset(s,0,sizeof(s));
+        int k,n=(1<<D)-1;
+        for(int i=0;i<I;i++)
+        {
+            k=1;
+            for(;;){
+                s[k]=!s[k];
+                k=s[k]?k*2:k*2+1;
+                if(k>n)break;
+            }
+        }
+        printf("%d\n",k/2);
+    }
+    int endd;
+    scanf("%d",&endd);
+}
+input
+1
+4 2
+-1
+output
+12
+
+
