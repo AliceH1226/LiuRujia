@@ -1,0 +1,59 @@
+//given preorder, output each sum of the one row
+//the weight of left child is accumulated on the former square of the only row,
+//the weight of right child is accumulated on the latter square of the only row.
+//output all the sum of the row
+
+
+
+
+
+
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+
+const int maxn=100;
+int sum[maxn];
+void build(int p)
+{
+    int v;
+    cin>>v;
+    if(v==-1)return;
+    sum[p]+=v;
+    build(p-1);build(p+1);
+}
+bool init()
+{
+    int v;cin>>v;
+    if(v==-1)return false;
+    memset(sum,0,sizeof(sum));
+    int pos=maxn/2;
+    sum[pos]=v;
+    build(pos-1);build(pos+1);
+    
+}
+
+int main()
+{
+    freopen("C:\\Users\\lenovo\\Desktop\\tmp.txt","r",stdin);
+    int kase=0;
+    while(init())
+    {
+        int p=0;
+        while(sum[p]==0)p++;
+        cout<<"Case "<<++kase<<":\n"<<sum[p++];
+        while(sum[p]!=0)cout<<" "<<sum[p++];
+        cout<<"\n\n";
+    }
+    
+     fclose(stdin);
+}
+input
+5 7 -1 6 -1 -1 3 -1 -1
+8 2 9 -1 -1 6 5 -1 -1 12 -1 -1 3 7 -1 -1 -1
+output
+Case 1:
+7 11 3
+
+Case 2:
+9 7 21 15
