@@ -72,9 +72,9 @@ void floodfill(int& v, int& s) {
     Cell c = q.front(); q.pop();
     v += c.volume();
     for(int i = 0; i < 6; i++) {
-      Cell c2 = c.neighbor(i);
+      Cell c2 = c.neighbor(i);//c itself can't be calculated
       if(!c2.valid()) continue;
-      if(c2.solid()) s += c.area(i);
+      if(c2.solid()) s += c.area(i);//if visited, color is 2, boolean is false, can't enter;
       else if(!c2.getVis()){
         c2.setVis();
         q.push(c2);
