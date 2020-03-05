@@ -1,52 +1,46 @@
-//uva673
+uva712
 
-#include<iostream>
-#include<stack>
-#include<sstream>
-#include<cstring>
-using namespace std;
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+#define N 1000
+#define M 10
 
 
 int main()
 {
-    int n;
-    cin>>n;
-    getchar();
-    while(n--)
+    int ca=1,n,m;
+    char wev[N],seq[M],ans[M],leave[N];
+    while(scanf("%d",&n),n)
     {
-       string p;
-        getline(cin,p);
+        memset(wev,0,sizeof(wev));
+        memset(seq,0,sizeof(ans));
+        memset(ans,0,sizeof(ans));
 
-        stack<char>s;
-
-        bool flag=true;
-        for(int i=0;i<p.length();i++)
+        for(int i=0;i<n;i++)
         {
-            if(p[i]=='('||p[i]=='[')
-                s.push(p[i]);
-            else if(p[i]==')')
-            {
-                if(s.empty()) flag=false;
-                else if(s.top()=='(')
-                    s.pop();
-                else flag=false;
-            }
-            else if(p[i]==']')
-            {
-                if(s.empty()) flag=false;
-                else if(s.top()=='[')
-                    s.pop();
-                else flag=false;
-            }
-            if(!flag)
-            {
-                break;
-            }
+            scanf("%s",wev);
         }
 
-        if(!s.empty()||!flag)cout<<"No"<<endl;
-        else
-            cout<<"Yes"<<endl;
+        scanf("%s",leave);
+        scanf("%d",&m);
 
+        int idx_lmleave=pow(2,n);
+        for(int i=0;i<m;i++)
+        {
+            scanf("%s",seq);
+            int k=1;
+            for(int j=0;j<n;j++)
+            {
+
+                if(seq[j]=='1')k=k*2+1;
+                else k=k*2;
+            }
+            ans[i]=leave[k-idx_lmleave];
+
+        }
+        ans[m]='\0';
+        printf("S-Tree #%d:\n%s\n\n",ca++,ans);
     }
+    return 0;
 }
