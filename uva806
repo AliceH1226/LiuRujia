@@ -1,0 +1,85 @@
+//跟前面做过的四分树的题很类似
+
+
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+#include<vector>
+using namespace std;
+const int maxn=70;
+int n,k[10]={1};
+char g[maxn][maxn];
+vector<int> a;
+int solve_g(int l,int r,int u,int d,int cur,int p){
+    bool w=true,b=true;
+    for(int i=u;i<=d;++i){
+        if(!w&&!b) break;
+        for(int j=l;j<=r;++j){
+            if(g[i][j]=='1') w=false;
+            else b=false;
+        }
+    }
+    if(w||b) return b?cur:-1;
+    int h=l+(r-l+1)/2,v=u+(d-u+1)/2,t;
+    if((t=solve_g(l,h-1,u,v-1,cur+1*k[p],p+1))!=-1) a.push_back(t);
+    if((t=solve_g(h,r,u,v-1,cur+2*k[p],p+1))!=-1) a.push_back(t);
+    if((t=solve_g(l,h-1,v,d,cur+3*k[p],p+1))!=-1) a.push_back(t);
+    if((t=solve_g(h,r,v,d,cur+4*k[p],p+1))!=-1) a.push_back(t);
+    return -1;
+}
+void solve_a(int b){
+    int l=0,r=n-1,u=0,d=n-1;
+    while(b){
+        int h=l+(r-l+1)/2,v=u+(d-u+1)/2;
+        switch(b%5){
+            case 1:r=h-1,d=v-1;break;
+            case 2:l=h,d=v-1;break;
+            case 3:r=h-1,u=v;break;
+            case 4:l=h,u=v;break;
+        }
+        b/=5;
+    }
+    for(int i=u;i<=d;++i)
+        for(int j=l;j<=r;++j)
+            g[i][j]='*';
+    return;
+}
+int main(){
+    for(int i=1;i<10;++i) k[i]=k[i-1]*5;
+    for(int i=0;i<10;i++)printf("%d ",k[i]);
+    int t=0;
+    while(scanf("%d",&n),n){
+        if(t) printf("\n");
+        printf("Image %d\n",++t);
+        a.clear();
+        memset(g,0,sizeof(g));
+        if(n>0){
+            getchar();
+            for(int i=0;i<n;++i) fgets(g[i],maxn-1,stdin);
+            int k;
+            if((k=solve_g(0,n-1,0,n-1,0,0))!=-1) a.push_back(k);
+            sort(a.begin(),a.end());
+            for(int i=0;i<a.size();){
+                printf("%d",a[i++]);
+                if(i%12==0||i==(int)a.size()) printf("\n");
+                else printf(" ");
+            }
+            printf("Total number of black nodes = %d\n",(int)a.size());
+        }
+        else{
+            n=-n;
+            while(1){
+                int k;
+                scanf("%d",&k);
+                if(k<0) break;
+                solve_a(k);
+            }
+            for(int i=0;i<n;++i){
+                for(int j=0;j<n;++j)
+                    if(!g[i][j]) g[i][j]='.';
+                puts(g[i]);
+            }
+        }
+    }
+    return 0;
+}
