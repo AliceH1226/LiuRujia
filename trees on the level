@@ -90,7 +90,7 @@ bool readInput()
 		}
 		int v;
 		sscanf(&s[1], "%d", &v);
-		addnode(v, strchr(s, ',') + 1);
+		addnode(v, strchr(s, ',') + 1);//C 库函数 char *strchr(const char *str, int c) 在参数 str 所指向的字符串中搜索第一次出现字符 c（一个无符号字符）的位置。
 	}
 	return true;
 }
